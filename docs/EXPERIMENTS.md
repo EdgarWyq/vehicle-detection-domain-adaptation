@@ -1,6 +1,4 @@
-# 实验报告：Sunny/Night Hard Negative Mining
-
-Repository: `EdgarWyq/vehicle-detection-domain-adaptation`
+# Experiment Report: Sunny/Night Hard Negative Mining
 
 ## 1. 问题背景
 
@@ -44,7 +42,7 @@ hard-negative 实验额外加入 12 张无车辆夜间图片，每张复制 5 �
 | Optimizer | auto |
 | LR schedule | cosine |
 
-为了让对比更干净，两组实验保持完全相同训练参数，唯一差异是训练集是否包含 hard-negative 样本。
+两组实验保持相同训练参数，唯一差异是训练集是否包含 hard-negative 样本。
 
 ## 5. 指标结果
 

@@ -241,6 +241,7 @@ def copy_negative_samples() -> None:
         print("\nMissing source images:")
         for file_name in missing:
             print(f"- {file_name}")
+        print(f"\nPlace the images above in: {NEGATIVE_SOURCE_ARCHIVE_DIR}")
         raise SystemExit(1)
 
     copied = 0

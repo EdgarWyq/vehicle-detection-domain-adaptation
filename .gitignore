@@ -4,13 +4,12 @@ __pycache__/
 *.py[cod]
 
 runs/
-dataset/raw/
-dataset/hard_negative_sources/
+dataset/
 splits/*.txt
 local.yaml
 local_sunny_night_original.yaml
 *.pt
 *.onnx
 *.engine
-
-dataset/raw/ICDEC_challenge_2024-main/**/*.cache
+*.log
+1.md

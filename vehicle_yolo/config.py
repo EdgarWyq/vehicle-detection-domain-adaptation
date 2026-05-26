@@ -48,11 +48,7 @@ CHECK_SPLITS = [
 
 NEGATIVE_SUBDIR = Path("Sunny") / "Night" / "HardNegative"
 NEGATIVE_SOURCE_ARCHIVE_DIR = PROJECT_ROOT / "dataset" / "hard_negative_sources" / "sunny_night"
-NEGATIVE_SOURCE_SEARCH_DIRS = [
-    Path.home() / "Desktop",
-    NEGATIVE_SOURCE_ARCHIVE_DIR,
-    Path.home() / "xwechat_files",
-]
+NEGATIVE_SOURCE_SEARCH_DIRS = [NEGATIVE_SOURCE_ARCHIVE_DIR]
 GENERATED_NEGATIVE_PREFIX = "hard_negative_sunny_night_"
 NEGATIVE_COPIES_PER_IMAGE = 5
 NEGATIVE_SAMPLE_FILES = [

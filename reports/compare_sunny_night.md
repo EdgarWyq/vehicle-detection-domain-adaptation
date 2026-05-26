@@ -20,5 +20,6 @@
 
 ## 当前观察
 
-hard-negative 实验在 Precision、Recall、mAP50 和 mAP50-95 上均高于 original baseline。  
-但它在 50 张测试图中产生了更多有检测结果的标签文件，建议逐张对照两个可视化目录，重点看夜间灯光、屋顶边缘、窗户反光区域是否仍有误检。
+hard-negative 实验在 Precision、Recall、mAP50 和 mAP50-95 上均高于 original baseline。
+
+同时，hard-negative 模型在 50 张测试图中产生了更多有检测结果的标签文件。这个现象说明它不是简单变得更保守，而是在减少大框误检的同时保留了更多低照度小目标。后续仍需要逐张检查夜间灯光、屋顶边缘和窗户反光区域，确认剩余误检类型。
