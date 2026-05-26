@@ -1,4 +1,4 @@
-# Experiment Report: Sunny/Night Hard Negative Mining
+# 实验报告：Sunny/Night Hard Negative Mining
 
 ## 1. 问题背景
 
@@ -9,7 +9,7 @@
 - 暗部纹理与反光区域
 - 远距离小目标附近的复杂背景
 
-其中最明显的问题是大框误检：模型会用一个很大的 `truck`、`bike` 或 `cycle` 框覆盖建筑、道路和暗部区域。
+其中最明显的问题是大框误检：模型会用较大的 `truck`、`bike` 或 `cycle` 框覆盖建筑、道路和暗部区域。
 
 ## 2. 实验目标
 
@@ -77,12 +77,13 @@ hard-negative 样本虽然没有任何车辆标签，但它会参与 YOLO 的背
 当前实验仍有局限：
 
 - 验证集规模较小，只有 50 张 Sunny/Night 图片。
-- hard-negative 来自同一类拍摄角度，负样本多样性仍不足。
+- hard-negative 来自相近拍摄角度，负样本多样性仍不足。
 - 复制 hard-negative 会改变训练分布，复制倍数需要继续消融。
 
-下一步可以做：
+后续可以继续做：
 
 - 比较复制倍数：1x、3x、5x、10x。
-- 增加更多无车夜间场景，例如路口、停车场、居民楼外立面。
+- 增加更多无车辆夜间场景，例如路口、停车场、居民楼外立面。
 - 单独统计误检框数量、平均框面积和 false positive 类型。
-- 在更高置信度阈值下比较 precision-recall tradeoff。
+- 在不同置信度阈值下比较 precision-recall tradeoff。
+

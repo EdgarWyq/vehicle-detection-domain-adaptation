@@ -1,47 +1,47 @@
-# Project Notes
+# 项目笔记
 
-## Problem
+## 问题定位
 
-The original Sunny/Night model produced several large false-positive boxes in dark urban scenes. Typical error sources included building edges, roof contours, window reflections and local light sources.
+原始 Sunny/Night 模型在夜间城市道路场景中出现了较明显的大框误检。常见误检来源包括建筑边缘、屋顶轮廓、窗户反光和局部强光。
 
-Instead of only raising the confidence threshold, this project tests whether adding empty-label hard negatives can improve the detector during training.
+如果只提高置信度阈值，虽然可以过滤一部分低分误检，但也会牺牲召回。本项目尝试从训练阶段处理这个问题：加入空标签 hard-negative，让模型学习这些夜间背景不是车辆。
 
-## Experiment Design
+## 实验设计
 
-Two models were trained with the same settings:
+两组模型使用相同训练设置：
 
 - Model: YOLO11s
 - Image size: 960
 - Epochs: 100
 - Batch size: 4
 - Augmentation: disabled
-- Validation split: unchanged Sunny/Night validation set
+- Validation split: 原始 Sunny/Night 验证集
 
-The only difference is the training set:
+唯一变量是训练集：
 
-- `original`: original Sunny/Night training split.
-- `hard-negative`: original Sunny/Night training split plus 60 empty-label hard-negative images.
+- `original`：原始 Sunny/Night 训练集。
+- `hard-negative`：原始 Sunny/Night 训练集 + 60 张空标签 hard-negative 样本。
 
-The 60 hard-negative images come from 12 manually collected no-vehicle night scenes, each repeated 5 times.
+60 张 hard-negative 来自 12 张无车辆夜间图片，每张重复 5 次。
 
-## Why Empty Labels Help
+## 空标签样本的作用
 
-YOLO learns objectness for a large number of background locations. Empty-label hard-negative images push the objectness score down for background patterns that previously looked vehicle-like to the model.
+YOLO 会在大量背景位置上学习 objectness。空标签 hard-negative 会压低模型对特定背景纹理的目标置信度。
 
-In this dataset, the hard negatives are close to the actual failure mode, so they are more useful than generic background images. They reduce large false-positive boxes and can also help real small targets survive NMS because fewer high-confidence background boxes compete with them.
+这批 hard-negative 与实际误检场景高度接近，因此比普通背景图更有价值。它们能减少夜间大框误检，也可能让真实小目标在 NMS 后更容易保留下来，因为高置信度背景框变少了。
 
-## Result Summary
+## 结果摘要
 
-| Experiment | Precision | Recall | mAP50 | mAP50-95 |
+| 实验 | Precision | Recall | mAP50 | mAP50-95 |
 | --- | ---: | ---: | ---: | ---: |
 | Original | 0.33581 | 0.17705 | 0.17374 | 0.08348 |
 | Hard-negative | 0.40781 | 0.19583 | 0.20361 | 0.08817 |
 
-The hard-negative model improves all reported metrics on the same 50-image Sunny/Night validation set.
+hard-negative 模型在同一组 50 张 Sunny/Night 验证图上，四项指标均高于 baseline。
 
-## Limitations
+## 局限
 
-- The validation set is small, so the result should be treated as a focused case study rather than a general benchmark.
-- The hard-negative images come from similar viewpoints; more diverse night backgrounds would make the conclusion stronger.
-- Repeating empty-label images changes the training distribution. A follow-up ablation could compare 1x, 3x, 5x and 10x repeat factors.
+- 验证集只有 50 张图，结论更适合作为针对性案例分析，而不是通用 benchmark。
+- hard-negative 图片来自相近视角，背景多样性还不够。
+- 重复空标签图片会改变训练分布，后续可继续比较 1x、3x、5x、10x 等不同复制倍数。
 
