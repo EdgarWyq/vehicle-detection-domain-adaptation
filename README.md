@@ -1,6 +1,10 @@
-# Nighttime Vehicle Detection with Hard Negative Mining
+# vehicle-detection-domain-adaptation
+
+Nighttime vehicle detection with hard negative mining and domain-focused error analysis.
 
 > 基于 YOLO11s 的晴天夜间车辆检测实验：针对夜间灯光、屋顶、窗户反光引发的大框误检，引入无车辆 hard-negative 样本，并用 baseline 对比验证效果。
+
+GitHub: [EdgarWyq/vehicle-detection-domain-adaptation](https://github.com/EdgarWyq/vehicle-detection-domain-adaptation)
 
 ## 项目亮点
 
@@ -83,6 +87,13 @@ YOLO 在训练时不仅学习目标框，也会学习大量背景区域的 objec
 ```
 
 ## 复现方式
+
+克隆项目：
+
+```powershell
+git clone https://github.com/EdgarWyq/vehicle-detection-domain-adaptation.git
+cd vehicle-detection-domain-adaptation
+```
 
 1. 安装依赖：
 

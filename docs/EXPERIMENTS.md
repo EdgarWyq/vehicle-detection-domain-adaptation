@@ -1,5 +1,7 @@
 # 实验报告：Sunny/Night Hard Negative Mining
 
+Repository: `EdgarWyq/vehicle-detection-domain-adaptation`
+
 ## 1. 问题背景
 
 在晴天夜间车辆检测场景中，模型容易把以下背景区域误检为车辆：
@@ -86,4 +88,3 @@ hard-negative 样本虽然没有任何车辆标签，但它会参与 YOLO 的背
 - 增加更多无车夜间场景，例如路口、停车场、居民楼外立面。
 - 单独统计误检框数量、平均框面积和 false positive 类型。
 - 在更高置信度阈值下比较 precision-recall tradeoff。
-

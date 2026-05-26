@@ -4,6 +4,8 @@
 
 基于 YOLO11 的晴天夜间车辆检测与 Hard Negative Mining 误检抑制
 
+GitHub: `https://github.com/EdgarWyq/vehicle-detection-domain-adaptation`
+
 ## 简历一句话
 
 基于 YOLO11s 构建晴天夜间车辆检测模型，针对夜间灯光、屋顶和反光导致的大框误检问题，引入无车辆 hard-negative 样本进行对比实验，在相同训练配置下提升 Precision、Recall 和 mAP 指标，并完成数据检查、训练、验证、预测可视化和实验报告的工程化闭环。
@@ -48,4 +50,3 @@ YOLO 会在每张图上学习大量背景位置的 objectness。空标签图片�
 ### 复制 hard-negative 会不会过拟合？
 
 有风险，所以我把它作为一次定向实验。后续可以做复制倍数消融，比较 1x、3x、5x、10x 对 Precision 和 Recall 的影响。
-
